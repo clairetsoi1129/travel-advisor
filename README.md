@@ -1,3 +1,25 @@
+# travel-advisor
+```
+npx create-react-app ./
+npm install --legacy-peer-deps @material-ui/core @material-ui/icons @material-ui/lab @react-google-maps/api axios google-map-react
+```
+
+1. Enable Google API 
+> Maps Javascript API
+> Places API
+
+2. Enable Rapid API
+
+3. snazzymaps.com to find map style
+
+4. netify to deploy app
+
+
+
+
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
@@ -68,4 +90,6 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
-# travel-advisor
+
+
+
