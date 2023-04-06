@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { CssBaseline, Grid } from '@material-ui/core';
 
-import { getPlacesData } from './api/travelAdvisorAPI';
+import { getData } from './api/travelAdvisorAPI';
 import Header from './components/Header/Header';
 import List from './components/List/List';
 import Map from './components/Map/Map';
@@ -33,17 +33,23 @@ const App = () => {
   }, [rating]);
 
   useEffect(() => {
+    const abortController = new AbortController();
     if (bounds.sw && bounds.ne) {
       setIsLoading(true);
 
-      getPlacesData(type, bounds.sw, bounds.ne)
-        .then((data) => {
-          setPlaces(data.filter((place) => place.name && place.num_reviews > 0));
-          setFilteredPlaces([]);
-          setRating('');
-          setIsLoading(false);
-        });
+      const getPlacesData = async () => {
+
+        getData(type, bounds.sw, bounds.ne, abortController.signal)
+          .then((data) => {
+            setPlaces(data?.filter((place) => place.name && place.num_reviews > 0));
+            setFilteredPlaces([]);
+            setRating('');
+            setIsLoading(false);
+          });
+      }
+      getPlacesData();
     }
+    return () => abortController.abort();
   }, [bounds, type]);
 
   const onLoad = (autoC) => setAutocomplete(autoC);
