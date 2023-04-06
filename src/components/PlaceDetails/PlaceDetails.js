@@ -4,7 +4,7 @@ import LocationOnIcon from '@material-ui/icons/LocationOn';
 import PhoneIcon from '@material-ui/icons/Phone';
 import Rating from '@material-ui/lab/Rating';
 
-import useStyles from './styles.js';
+import useStyles from './styles';
 
 const PlaceDetails = ({ place, selected, refProp }) => {
   if (selected) refProp?.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -37,7 +37,7 @@ const PlaceDetails = ({ place, selected, refProp }) => {
         </Box>
         {place?.awards?.map((award) => (
           <Box display="flex" justifyContent="space-between" my={1} alignItems="center">
-            <img src={award.images.small} />
+            <img src={award.images.small} alt={award} />
             <Typography variant="subtitle2" color="textSecondary">{award.display_name}</Typography>
           </Box>
         ))}
